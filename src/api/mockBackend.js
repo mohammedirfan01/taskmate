@@ -1,18 +1,14 @@
-// src/api/mockBackend.js
-
 export function mockBackend(path, method, body) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Load all collections
       let users = JSON.parse(localStorage.getItem("taskmate_users")) || [];
       let services =
         JSON.parse(localStorage.getItem("taskmate_services")) || [];
       let bookings =
         JSON.parse(localStorage.getItem("taskmate_bookings")) || [];
 
-      // -------------------------
       // AUTH: SIGNUP
-      // -------------------------
+
       if (path === "/auth/signup" && method === "POST") {
         const exists = users.some((u) => u.email === body.email);
 
@@ -34,9 +30,8 @@ export function mockBackend(path, method, body) {
         });
       }
 
-      // -------------------------
       // AUTH: LOGIN
-      // -------------------------
+
       if (path === "/auth/login" && method === "POST") {
         const found = users.find(
           (u) => u.email === body.email && u.password === body.password
@@ -52,9 +47,8 @@ export function mockBackend(path, method, body) {
         });
       }
 
-      // -------------------------
       // AUTH: ME
-      // -------------------------
+
       if (path === "/auth/me" && method === "GET") {
         const token = localStorage.getItem("taskmate_token");
         if (!token) return reject({ message: "Not authenticated" });
@@ -67,9 +61,8 @@ export function mockBackend(path, method, body) {
         return resolve({ user });
       }
 
-      // -------------------------
       // PARTNER SERVICES: CREATE
-      // -------------------------
+
       if (path === "/partner/services" && method === "POST") {
         const newService = {
           id: Date.now(),
@@ -82,9 +75,8 @@ export function mockBackend(path, method, body) {
         return resolve(newService);
       }
 
-      // -------------------------
       // PARTNER SERVICES: LIST
-      // -------------------------
+
       if (path.startsWith("/partner/services/") && method === "GET") {
         const partnerId = path.split("/").pop();
         const list = services.filter((s) => String(s.partnerId) === partnerId);
@@ -92,9 +84,8 @@ export function mockBackend(path, method, body) {
         return resolve({ services: list });
       }
 
-      // -------------------------
       // PARTNER SERVICES: DELETE
-      // -------------------------
+
       if (path.startsWith("/partner/services/") && method === "DELETE") {
         const id = path.split("/").pop();
         services = services.filter((s) => String(s.id) !== id);
@@ -103,9 +94,7 @@ export function mockBackend(path, method, body) {
         return resolve({ success: true });
       }
 
-      // -------------------------
       // BOOKINGS: CREATE
-      // -------------------------
       if (path === "/bookings" && method === "POST") {
         const newBooking = {
           id: Date.now(),
@@ -119,9 +108,7 @@ export function mockBackend(path, method, body) {
         return resolve(newBooking);
       }
 
-      // -------------------------
       // BOOKINGS: GET FOR PARTNER
-      // -------------------------
       if (path.startsWith("/partner/bookings/") && method === "GET") {
         const partnerId = path.split("/").pop();
         const list = bookings.filter((b) => String(b.partnerId) === partnerId);
@@ -129,9 +116,7 @@ export function mockBackend(path, method, body) {
         return resolve({ bookings: list });
       }
 
-      // -------------------------
       // BOOKINGS: GET FOR CLIENT
-      // -------------------------
       if (path.startsWith("/client/bookings/") && method === "GET") {
         const clientId = path.split("/").pop();
         const list = bookings.filter((b) => String(b.clientId) === clientId);
@@ -139,9 +124,7 @@ export function mockBackend(path, method, body) {
         return resolve({ bookings: list });
       }
 
-      // -------------------------
       // BOOKINGS: UPDATE STATUS
-      // -------------------------
       if (path.startsWith("/bookings/") && method === "PATCH") {
         const id = path.split("/").pop();
         const booking = bookings.find((b) => String(b.id) === id);
@@ -154,9 +137,7 @@ export function mockBackend(path, method, body) {
         return resolve(booking);
       }
 
-      // -------------------------
       // UNKNOWN ENDPOINT
-      // -------------------------
       reject({ message: "Unknown endpoint: " + path });
     }, 400);
   });

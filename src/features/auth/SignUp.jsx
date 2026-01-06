@@ -1,4 +1,3 @@
-// src/pages/SignUp.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -40,7 +39,7 @@ export default function SignUp() {
   const { signup } = useAuth();
   const navigate = useNavigate();
 
-  // Validation helpers
+  // Validation functions
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
   const validatePhone = (phone) =>
@@ -52,7 +51,7 @@ export default function SignUp() {
     console.log("ROLE:", role);
     console.log("EMAIL:", email);
 
-    // Basic validation
+    // Validation
     if (!validateEmail(email)) {
       toast.error("Please enter a valid email address.");
       return;
@@ -73,7 +72,7 @@ export default function SignUp() {
       return;
     }
 
-    // ⭐ YOUR REQUIRED PAYLOAD STRUCTURE ⭐
+    //  PAYLOAD CONSTRUCTION
     const payload =
       role === "client"
         ? {
@@ -116,7 +115,7 @@ export default function SignUp() {
         <h2 className="text-2xl font-bold mb-6">Create your account</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Role selector */}
+          {/* Role selection */}
           <select
             className="w-full px-4 py-2 border rounded-md"
             value={role}

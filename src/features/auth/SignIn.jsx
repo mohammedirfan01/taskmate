@@ -1,4 +1,3 @@
-// src/pages/SignIn.jsx
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -15,11 +14,9 @@ export default function SignIn() {
   const { user, login } = useAuth();
   const navigate = useNavigate();
 
-  // Rate limiting
   const MAX_ATTEMPTS = 5;
-  const LOCKOUT_TIME = 60 * 1000; // 1 minute
+  const LOCKOUT_TIME = 60 * 1000;
 
-  // Auto‑redirect if already logged in
   useEffect(() => {
     if (user) {
       navigate(user.role === "partner" ? "/partners" : "/clients");
@@ -37,7 +34,6 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check lockout
     const lockout = JSON.parse(localStorage.getItem("taskmate_lockout"));
     if (lockout && Date.now() < lockout) {
       const seconds = Math.ceil((lockout - Date.now()) / 1000);
@@ -45,7 +41,6 @@ export default function SignIn() {
       return;
     }
 
-    // Basic validation
     if (!validateEmail(email)) {
       toast.error("Invalid email format");
       return;
@@ -59,7 +54,7 @@ export default function SignIn() {
     try {
       setIsSubmitting(true);
 
-      // ⭐ YOUR REQUIRED LOGIN STRUCTURE ⭐
+      // LOGIN STRUCTURE
       const loggedInUser = await login(email, password);
 
       toast.success("Welcome back!");

@@ -1,12 +1,11 @@
-// src/context/AuthContext.jsx
 import { useContext, createContext, useState, useEffect } from "react";
 import { api } from "../api/client";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // user profile
-  const [loading, setLoading] = useState(true); // initial load
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("taskmate_token");
@@ -15,7 +14,6 @@ export const AuthProvider = ({ children }) => {
       return;
     }
 
-    // Fetch current user from backend
     api
       .get("/auth/me")
       .then((data) => {
@@ -31,7 +29,6 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const data = await api.post("/auth/login", { email, password });
 
-    // Expect backend to return { token, user }
     localStorage.setItem("taskmate_token", data.token);
     setUser(data.user);
     return data.user;

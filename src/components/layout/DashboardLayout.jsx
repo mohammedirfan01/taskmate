@@ -1,4 +1,3 @@
-// src/layouts/DashboardLayout.jsx
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
 

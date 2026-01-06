@@ -1,4 +1,3 @@
-// src/api/client.js
 import { mockBackend } from "./mockBackend";
 
 export const api = {

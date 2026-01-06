@@ -2,12 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom utilities / overrides */
 body {
   @apply bg-slate-50 text-slate-900;
 }
 
-/* Example subtle animation */
 .card-hover {
   @apply transition-transform duration-150;
 }
@@ -34,7 +32,6 @@ body {
   animation: fadeUp 0.8s ease-out forwards;
 }
 
-/* navbar css */
 .nav-link {
   @apply hover:text-sky-700 hover:underline underline-offset-4 transition;
 }

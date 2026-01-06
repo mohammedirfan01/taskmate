@@ -3,11 +3,9 @@ import { Suspense, lazy } from "react";
 import { AppProvider } from "../context/AppContext";
 import ProtectedRoute from "../routes/ProtectedRoute";
 
-// Layouts
 import AppLayout from "../components/layout/AppLayout";
 import DashboardLayout from "../components/layout/DashboardLayout";
 
-// Lazy-loaded pages
 const Home = lazy(() => import("../pages/Home"));
 const ForClients = lazy(() => import("../components/home/ForClients"));
 const ForPartners = lazy(() => import("../components/home/Forpartners"));
@@ -47,7 +45,6 @@ function App() {
           }
         >
           <Routes>
-            {/* PUBLIC LAYOUT (Navbar included) */}
             <Route element={<AppLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
@@ -61,7 +58,6 @@ function App() {
               <Route path="/partner/:id" element={<PartnerProfile />} />
             </Route>
 
-            {/* PROTECTED LAYOUT (Navbar included) */}
             <Route
               element={
                 <ProtectedRoute>

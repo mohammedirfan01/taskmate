@@ -6,14 +6,14 @@ import { useAuth } from "../../context/AuthContext";
 const Navbar = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const { user, logout } = useAuth(); // <-- get auth state
+  const { user, logout } = useAuth();
 
   const toggleMenu = () => setOpen(!open);
   const closeMenu = () => setOpen(false);
 
   const handleLogout = () => {
     logout();
-    navigate("/signIn"); // redirect after logout
+    navigate("/signIn");
   };
 
   return (
@@ -29,7 +29,6 @@ const Navbar = () => {
         >
           TaskMate
         </Link>
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           <HashLink smooth to="/#hero" className="nav-link" onClick={closeMenu}>
             Home
@@ -66,7 +65,6 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-3">
           {!user ? (
             <>
@@ -102,7 +100,6 @@ const Navbar = () => {
             Profile
           </a>
         )}
-        {/* Mobile Hamburger */}
         <button
           className="md:hidden text-slate-700 text-2xl"
           onClick={toggleMenu}
@@ -110,7 +107,6 @@ const Navbar = () => {
           {open ? "✕" : "☰"}
         </button>
       </nav>
-      {/* Mobile Menu */}
       {open && (
         <div className="md:hidden bg-white border-t border-slate-200 shadow-sm">
           <div className="mobile-menu">

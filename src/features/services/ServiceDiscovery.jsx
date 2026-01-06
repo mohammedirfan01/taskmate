@@ -11,9 +11,7 @@ export default function ServiceDiscovery() {
 
   useEffect(() => {
     // Load all users and filter partners
-    api
-      .get("/auth/me") // just to trigger mock backend init
-      .catch(() => {}); // ignore
+    api.get("/auth/me").catch(() => {});
 
     const users = JSON.parse(localStorage.getItem("taskmate_users")) || [];
     const partnerList = users.filter((u) => u.role === "partner");

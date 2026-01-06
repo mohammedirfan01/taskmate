@@ -8,7 +8,6 @@ export default function PartnerServices() {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // form state
   const [title, setTitle] = useState("");
   const [priceFrom, setPriceFrom] = useState("");
   const [description, setDescription] = useState("");
