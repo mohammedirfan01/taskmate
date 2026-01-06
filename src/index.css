@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom utilities / overrides */
+body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+/* Example subtle animation */
+.card-hover {
+  @apply transition-transform duration-150;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+/* navbar css */
+.nav-link {
+  @apply hover:text-sky-700 hover:underline underline-offset-4 transition;
+}
+
+.nav-button {
+  @apply text-sm px-3 py-1 rounded-md border border-sky-600 text-sky-700 hover:bg-sky-50 transition;
+}
+
+.nav-button-primary {
+  @apply text-sm px-4 py-2 rounded-md bg-sky-600 text-white hover:bg-sky-700 transition;
+}
+
+.mobile-link {
+  @apply hover:text-sky-600 transition;
+}
+
+.mobile-button {
+  @apply w-full px-3 py-2 border border-sky-600 text-sky-700 rounded-md hover:bg-sky-50 transition;
+}
+
+.mobile-button-primary {
+  @apply w-full px-4 py-2 bg-sky-600 text-white rounded-md hover:bg-sky-700 transition;
+}
+
+.mobile-menu {
+  @apply flex flex-col items-center text-center px-4 py-4 gap-4 text-sm font-medium;
+}
+
