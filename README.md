@@ -55,7 +55,7 @@ src/
 ├── context/           # Global state & auth context
 ├── utils/             # Helper functions
 └── App.jsx
-
+```
 
 🔐 Route Protection (Example)
 
@@ -64,17 +64,20 @@ src/
     * /clients – client dashboard
     * /partners – partner dashboard
 
-Role-based access handled via Protected Route component
+Role-based access handled via ProtectedRoute component
 
 ▶️ Getting Started
 1. Clone the repository
+   ```
     git clone https://github.com/mohammedirfan01/taskmate.git
     cd taskmate
-
-2. Install dependencies
+   
+3. Install dependencies
+   ```
     npm install
 
-3. Run the app
+5. Run the app
+   ```
     npm run dev
 
 
