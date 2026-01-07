@@ -71,15 +71,11 @@ Role-based access handled via ProtectedRoute component
    ```
     git clone https://github.com/mohammedirfan01/taskmate.git
     cd taskmate
-   
 3. Install dependencies
    ```
     npm install
-
 5. Run the app
    ```
     npm run dev
-
-
 App runs at:
   👉 http://localhost:5173
